@@ -16,24 +16,24 @@ class MyApp extends StatelessWidget {
         length: 3,
         child: Scaffold(
           drawer: Drawer(
-              child: ListTile(
+              child:  ListTile(
                 title: Text('Item 1'),
                 onTap: () {
-                     SnackBar(
-                       content : Row(
-                         children:[
+                  SnackBar(
+                      content : Row(
+                        children:[
                           Expanded(
-                            child : Text("Snack Bar")
+                              child : Text("Snack Bar")
                           )
-                         ],
-                       )
-                     );
+                        ],
+                      )
+                  );
                 },
               )
           ),
-          appBar: AppBar(
+          appBar: AppBar(  //Appbar
             title: Text("Music Player"),
-            bottom: TabBar(
+            bottom: TabBar( //tablayout
               tabs:[
                 Tab(text: "Home"),
                 Tab(text: "Music"),
@@ -41,14 +41,47 @@ class MyApp extends StatelessWidget {
               ],
             ),
           ),
-          body: TabBarView(
+          body: TabBarView( // Tab Contents
             children:[
-              Image.network("https://cdn.pixabay.com/photo/2017/03/13/10/25/hummingbird-2139279__340.jpg",
-              fit: BoxFit.cover),
-              Image.network("https://cdn.pixabay.com/photo/2018/07/14/15/27/cafe-3537801__340.jpg",
-              fit: BoxFit.cover),
-              Image.network("https://cdn.pixabay.com/photo/2019/02/04/20/07/flowers-3975556__340.jpg",
-              fit: BoxFit.cover)
+              Center(
+                  child: Row( // row
+                    children:[
+                      FlatButton(
+                        child: Text("Button 1"),
+                        splashColor: Colors.red,
+                        textColor: Colors.white,
+                      ),
+                      FlatButton(
+                        child: Text("Button 2"),
+                        splashColor: Colors.red,
+                        textColor: Colors.white,
+                      ),
+                      FlatButton(
+                        child: Text("Button 3"),
+                        color: Colors.red,
+                        textColor: Colors.white,
+                      )
+                    ],
+                  )
+              ),
+             Center(
+                 child : Container( // container
+                   height: 200,
+                   width: 200,
+                   color: Colors.red
+                 )
+             ),
+             RaisedButton(  //Button with elevation
+               child: Text("Click ME"),
+               onPressed: (){
+                CupertinoAlertDialog( //Alert dialog
+                 title: Text("Are you sure you want to quit the app"),
+                  actions:[
+                    CupertinoDialogAction(child: Text("No"),),
+                    CupertinoDialogAction(child: Text("Yes"))
+                  ],
+                );
+              }),
             ],
           ),
 
